@@ -3,7 +3,7 @@ If you have g++ installed, you can complie with build.sh script
 
 ## Usage
 Example: 
-./cppcompute "1 + 1";
+./cppcompute "1 + 1"
 Will output
 1 + 1 = 2
 
