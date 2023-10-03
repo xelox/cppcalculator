@@ -15,7 +15,6 @@ std::vector<T> slice_vec(const std::vector<T> &vec, int start, int end){
     return res;
 }
 
-//simple array that contains supported operation symbols
 const std::array<std::string, 6> supportedOperations = {"+", "-", "*", "/", "^","x"};
 
 //determines if the c char is an operation character
@@ -70,8 +69,6 @@ float compute(std::string computation){
             //if we reached back depth 0, compute subcomputation
             if(depth == 0) {
                 const auto res = compute(subcomputation);
-                
-                
                 segments_vec.push_back(std::to_string(res * (toNegate ? -1 : 1)));
                 toNegate = false;
                 subcomputation.clear();
@@ -103,7 +100,6 @@ float compute(std::string computation){
         //adding computation symbol to the vec
         else if(testOperation(std::string() + c)){
             segments_vec.push_back(std::string() + c);
-            
         }
     }
     //if numeric_cursor is not empty, at the end, I push it to the array
@@ -112,7 +108,6 @@ float compute(std::string computation){
         
         segments_vec.push_back(std::to_string(insertion));
     }
-    
 
     //this lambda function finds the first operation to compute
     //pow operation has prio, multiplication and division have secondary prio
@@ -145,6 +140,7 @@ float compute(std::string computation){
         segments_vec.push_back(needle);
         segments_vec.insert(segments_vec.end(), tail.begin(), tail.end());
     }
+
     return std::stof(segments_vec[0]);
 }
 
